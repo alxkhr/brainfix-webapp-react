@@ -8,9 +8,14 @@ import { GET_NOTES, RECEIVED_NOTES, SET_NOTES } from './note/actions';
 function* requestToken(action: AnyAction): Iterator<CallEffect | PutEffect<AnyAction>> {
   try {
     const token = yield call(() =>
-      fetch(`/api/requestToken?username=${action.username}&password=${action.password}`, {
-        method: 'POST',
-      }).then((response: Response) => response.text()),
+      fetch(
+        `https://brainfix.herokuapp.com/api/requestToken?username=${action.username}&password=${
+          action.password
+        }`,
+        {
+          method: 'POST',
+        },
+      ).then((response: Response) => response.text()),
     );
     localStorage.setItem('authToken', token);
     yield put({ type: LOGGED_IN });
@@ -24,8 +29,8 @@ function* getNotes(): Iterator<CallEffect | PutEffect<AnyAction>> {
     const token = localStorage.getItem('authToken');
     const notes: Note[] = JSON.parse(
       yield call(() =>
-        fetch(`/api/getNotes?token=${token}&lastSync=${0}`).then((response: Response) =>
-          response.text(),
+        fetch(`https://brainfix.herokuapp.com/api/getNotes?token=${token}&lastSync=${0}`).then(
+          (response: Response) => response.text(),
         ),
       ),
     );
