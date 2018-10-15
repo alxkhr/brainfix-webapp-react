@@ -1,7 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = {
+const webAppConfig = {
   mode: 'development',
   entry: './src/index.tsx',
   devtool: 'inline-source-map',
@@ -11,6 +13,15 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.sw\.js$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+          },
+        },
       },
     ],
   },
@@ -22,6 +33,13 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new CopyWebpackPlugin([
+      {
+        from: 'statics',
+        to: './',
+      },
+    ]),
     new HtmlWebpackPlugin({
       template: 'templates/index.html',
     }),
@@ -30,8 +48,15 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 8080,
+    hot: false,
     proxy: {
-      '/api': 'http://192.168.178.29:8080',
+      '/api': {
+        target: 'https://brainfix.herokuapp.com',
+        secure: false,
+        changeOrigin: true,
+      },
     },
   },
 };
+
+module.exports = [webAppConfig];

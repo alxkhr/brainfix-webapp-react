@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "lint": "tslint 'src/**/*.ts?(x)'",
-    "build": "webpack --progress"
+    "build": "webpack --progress",
+    "build:watch": "webpack --watch --progress"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,14 @@
   },
   "homepage": "https://github.com/alxkhr/brainfix#readme",
   "devDependencies": {
+    "@types/react": "^16.4.16",
+    "@types/react-dom": "^16.0.9",
+    "@types/react-redux": "^6.0.9",
+    "@types/redux-logger": "^3.0.6",
+    "@types/uuid": "^3.4.4",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.3",
+    "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "ts-loader": "^5.2.1",
     "tslint": "^5.11.0",
@@ -27,11 +36,6 @@
     "webpack-dev-server": "^3.1.9"
   },
   "dependencies": {
-    "@types/react": "^16.4.16",
-    "@types/react-dom": "^16.0.9",
-    "@types/react-redux": "^6.0.9",
-    "@types/redux-logger": "^3.0.6",
-    "@types/uuid": "^3.4.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",

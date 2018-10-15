@@ -1,6 +1,7 @@
 import { AnyAction } from 'redux';
 
 export const LOG_IN = 'LOG_IN';
+export const LOG_OUT = 'LOG_OUT';
 export const LOGGED_IN = 'LOGGED_IN';
 
 export function login(username: string, password: string): AnyAction {
