@@ -1,1 +1,1 @@
-/api/*            https://brainfix.herokuapp.com/api/:splat
+/api/*  https://brainfix.herokuapp.com/api/:splat  200
