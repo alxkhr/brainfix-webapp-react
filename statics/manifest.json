@@ -1,0 +1,21 @@
+{
+  "short_name": "brainfix",
+  "name": "Fix Brain Fix Brain Fix",
+  "icons": [
+    {
+      "src": "/logo/logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/logo/logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#888888",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#888888"
+}
