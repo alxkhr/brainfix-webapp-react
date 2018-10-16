@@ -1,6 +1,7 @@
 {
   "short_name": "brainfix",
   "name": "Fix Brain Fix Brain Fix",
+  "description": "A fix for the brain.",
   "icons": [
     {
       "src": "/logo/logo-192.png",
